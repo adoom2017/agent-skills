@@ -1,0 +1,47 @@
+# Recommended Cargo Lint & Workspace Template (Rust 2024 Edition)
+# Copy the single-crate [lints.*] tables into your Cargo.toml,
+# or use the commented [workspace.*] layout for multi-crate repositories.
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+
+[lints.clippy]
+undocumented_unsafe_blocks = "warn"
+unwrap_used = "warn"
+dbg_macro = "warn"
+cast_possible_truncation = "warn"
+cast_sign_loss = "warn"
+needless_pass_by_value = "warn"
+cloned_instead_of_copied = "warn"
+
+# --- Multi-Crate Workspace Alternative (Root Cargo.toml) ---
+# [workspace]
+# resolver = "3"
+# members = ["crates/*"]
+#
+# [workspace.package]
+# edition = "2024"
+#
+# [workspace.dependencies]
+# serde = { version = "1", features = ["derive"] }
+#
+# [workspace.lints.rust]
+# unsafe_op_in_unsafe_fn = "deny"
+# missing_debug_implementations = "warn"
+#
+# [workspace.lints.clippy]
+# undocumented_unsafe_blocks = "warn"
+# unwrap_used = "warn"
+# dbg_macro = "warn"
+# cast_possible_truncation = "warn"
+# cast_sign_loss = "warn"
+# needless_pass_by_value = "warn"
+# cloned_instead_of_copied = "warn"
+#
+# --- Member Crate Cargo.toml ---
+# [package]
+# edition.workspace = true
+#
+# [lints]
+# workspace = true
